@@ -1,7 +1,6 @@
 let fs = require('fs');
-// const URL = 'https://drive.google.com/file/d/1W2fctaQGHKuJP0fm6OI3SMAzLQ8b1SVp/view';
 
-const FILE_NAME = './assets/books.json';
+const FILE_NAME = './assets/100_books.json';
 
 let bookRepo = {
     get: function(resolve, reject) {
@@ -11,6 +10,7 @@ let bookRepo = {
             }
             else {
                 resolve(JSON.parse(data));
+                console.log('get books', JSON.parse(data)[0].title);
             }
         });
     },
