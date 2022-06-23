@@ -5,12 +5,12 @@ const FILE_NAME = './assets/100_books.json';
 let bookRepo = {
     get: function(resolve, reject) {
         fs.readFile(FILE_NAME, function(err, data) {
-            if (err) {
+            if (err || !data) {
                 reject(err);
             }
             else {
                 resolve(JSON.parse(data));
-                console.log('get books', JSON.parse(data)[0].title);
+                console.log('bookRepo calling get', new Date().getTime());
             }
         });
     },

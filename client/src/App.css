@@ -34,31 +34,42 @@ ul {
 li {
   text-align: left;
 }
-.bookSingle {
+.aSection {
   border: 1px grey solid;
   margin: 20px;
   padding: 5px;
 }
-.bookItem {
-  text-align: left;
+
+.listLine {
   display: flex;
+  text-align: left;
 }
-.bookItem .itemLabel {
+.listLineItem {
+  margin: 5px;
+}
+.listLineLabel {
   min-width: 130px;
   margin-right: 10px;
 }
-.form {
+.title {
+  font-weight: bold;
+}
+/* ///////////////// */
+
+.list {
   display: flex;
   justify-content: flex-start;
   margin: 5px;
 }
-.form > div {
-  min-width: 120px;
+
+/* .bookItem {
   text-align: left;
-}
-.form input, .form button {
+  display: flex;
+} */
+.lists input, .lists button {
   margin-left: 20px;
 }
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 // Title, ISBN, Page count, Published date, THumbnail URL, ShortDescription, LongDescription, AUthors, Status, Categories
 // add to list of books and reset the form
 // Simple test case
-const Form = (props) => {
+const FormSingle = (props) => {
     const [value, setValue] = useState('');
 
     const handleSubmit = (event) => {
@@ -11,9 +11,16 @@ const Form = (props) => {
         props.handleSubmit(value);
         setValue('');
     };
+
+    const handleChange = (event) => {
+        event.preventDefault();
+        console.log('value: ', value);
+        props.handleChange(value);
+    }
+
     return (
-        <form onSubmit={handleSubmit} className="form">
-            <div>{props.label || 'Value'}</div>
+        <form onSubmit={handleSubmit} onChange={handleChange} className="list">
+            <div className="listLineItem">{props.label || 'Value'}</div>
             <input
                 type="text"
                 placeholder={props.label || 'value'}
@@ -30,4 +37,4 @@ const Form = (props) => {
     );
 }
 
-export default Form;
+export default FormSingle;
