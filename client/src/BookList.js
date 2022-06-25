@@ -1,10 +1,9 @@
 import React from "react";
 
-const formatArray = arrayIn => arrayIn.filter((item) => item.length > 0 ).join(', ');
+const formatArray = arrayIn => arrayIn.filter((item) => item.length > 0).join(', ');
 
 const Book1Line = (props) => {
     const book = props.book;
-    console.log('authors: ', book.authors);
     return (
         <li key={`${book.isbn || book.title}.${book.title.slice(0, 4)}`} className="listLine">
             <div className=" listLineLabel listLineItem">{book.isbn}</div>
@@ -18,13 +17,13 @@ const BookList = (props) => {
     const { allBooks } = props;
 
     return (
-        <>
-            <h2>BOOKLIST</h2>
+        <div className="aSection lineList">
+            <div className="title">Book List</div>
             <ul>
                 {allBooks.map((book, idx) =>
                     <Book1Line book={book} />
                 )}
             </ul>
-        </>);
+        </div>);
 }
 export default BookList;

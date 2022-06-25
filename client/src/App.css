@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -40,7 +29,14 @@ li {
   padding: 5px;
 }
 
+.list {
+  display: flex;
+  justify-content: flex-start;
+  margin: 5px;
+}
+
 .listLine {
+  width: 100%;
   display: flex;
   text-align: left;
 }
@@ -54,27 +50,16 @@ li {
 .title {
   font-weight: bold;
 }
-/* ///////////////// */
 
-.list {
-  display: flex;
-  justify-content: flex-start;
-  margin: 5px;
-}
-
-/* .bookItem {
+.requiredMsg {
+  color: red;
   text-align: left;
-  display: flex;
-} */
-.lists input, .lists button {
-  margin-left: 20px;
+  margin-right: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.submitButton {
+  margin-top: 20px;
+  margin-left: 5px;
+  width: 315px;
 }
+

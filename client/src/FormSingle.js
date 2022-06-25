@@ -19,21 +19,25 @@ const FormSingle = (props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit} onChange={handleChange} className="list">
-            <div className="listLineItem">{props.label || 'Value'}</div>
-            <input
-                type="text"
-                placeholder={props.label || 'value'}
-                value={value}
-                onChange={
-                    event => {
-                        setValue(event.target.value);
+        <div className="aSection">
+            <div className="title">Single Form</div>
+            <form onSubmit={handleSubmit} onChange={handleChange} className="listLine">
+                <div className="listLineLabel listLineItem">{props.label || 'Value'}</div>
+                <input
+                    type="text"
+                    placeholder={props.label || 'value'}
+                    value={value}
+                    onChange={
+                        event => {
+                            setValue(event.target.value);
+                        }
                     }
-                }
-                required
-            />
-            <button>Submit</button>
-        </form>
+                    required
+                    className="listLineItem"
+                />
+                <button className="listLineItem">Submit</button>
+            </form>
+        </div>
     );
 }
 

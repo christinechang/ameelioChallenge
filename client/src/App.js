@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import FormSingle from './FormSingle';
-import NewBook from './NewBook';
 import BookInfoDisplay from './BookInfoDisplay';
 import BookList from './BookList';
 import BookForm from './BookForm';
@@ -27,13 +26,9 @@ function App() {
   return (
     <div className="App">
       <BookForm />
-      <h3 className="sectionTitle">Single Form</h3>
 
       <FormSingle handleSubmit={setNewTitle} handleChange={setNewTitle} />
-
-      <div className="sectionTitle"> New Title: {newTitle} </div>
-
-      <NewBook />
+      {newTitle && <div>{`{Title: ${newTitle}}`} </div>}
 
       <BookInfoDisplay bookInfo={books[0]} />
 
