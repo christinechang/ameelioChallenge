@@ -69,7 +69,7 @@ const BookForm = () => {
 
     return (
         <div className="aSection lineList">
-            <div className="title">New Book Entry</div>
+            <div className="pageTitle">New Book Entry</div>
             <form onSubmit={handleSubmit} >
                 <InputSingle itemName="title" label="Title*" onChange={(event) => handleInputChange(event, 'title')} values={values} />
                 {submitted && !values.title ? <span className="requiredMsg listLineItem" required={true}>Title is required</span> : null}

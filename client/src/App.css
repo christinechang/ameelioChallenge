@@ -1,16 +1,5 @@
 .App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: left;
 }
 
 .App-link {
@@ -19,14 +8,17 @@
 
 ul {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
+
 li {
   text-align: left;
 }
 .aSection {
   border: 1px grey solid;
   margin: 20px;
-  padding: 5px;
+  padding: 20px;
 }
 
 .list {
@@ -47,10 +39,14 @@ li {
   min-width: 130px;
   margin-right: 10px;
 }
-.title {
+.pageTitle {
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+.bookTitle {
   font-weight: bold;
 }
-
 .requiredMsg {
   color: red;
   text-align: left;
@@ -60,6 +56,15 @@ li {
 .submitButton {
   margin-top: 20px;
   margin-left: 5px;
+  margin-bottom: 20px;
   width: 315px;
 }
 
+.navbar {
+  display: flex;
+  justify-content: start;
+}
+.navbtn {
+  margin: 10px 20px;
+  text-decoration: none;
+}

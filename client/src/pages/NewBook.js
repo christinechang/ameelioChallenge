@@ -3,7 +3,6 @@ import BookForm from '../BookForm';
 
 const NewBook = () => (
   <div className="mainPage">
-    <h2>New Book</h2>
     <BookForm />
   </div>
 );
