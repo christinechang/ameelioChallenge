@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-// Title, ISBN, Page count, Published date, THumbnail URL, ShortDescription, LongDescription, AUthors, Status, Categories
-// add to list of books and reset the form
+
 // Simple test case
 const FormSingle = (props) => {
     const [value, setValue] = useState('');
@@ -22,7 +21,7 @@ const FormSingle = (props) => {
         <div className="aSection">
             <div className="title">Single Form</div>
             <form onSubmit={handleSubmit} onChange={handleChange} className="listLine">
-                <div className="listLineLabel listLineItem">{props.label || 'Value'}</div>
+                <div className="listLineItem colLabel">{props.label || 'Value'}</div>
                 <input
                     type="text"
                     placeholder={props.label || 'value'}

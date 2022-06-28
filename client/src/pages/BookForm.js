@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import BookInfoDisplay from "./BookInfoDisplay"
+import BookInfoDisplay from "../BookInfoDisplay"
+import BookList from "../BookList";
 
 const InputSingle = (props) => {
     return (
         <div className="listLine">
-            <div className=" listLineLabel listLineItem">{props.label || 'Value'}</div>
+            <div className="listLineItem colLabel ">{props.label || 'Value'}</div>
             <input
                 id={props.itemName}
                 name={props.itemName}
@@ -17,7 +18,8 @@ const InputSingle = (props) => {
         </div>
     );
 }
-const BookForm = () => {
+const BookForm = (props) => {
+    const { addBook } = props;
     const [values, setValues] = useState({
         title: '',
         isbn: '',
@@ -47,8 +49,7 @@ const BookForm = () => {
             setValid(true);
         }
         setSubmitted(true);
-        console.log('values on submit: ', values);
-        // add new book to list. (put) and then reset
+        addBook(values);
         // resetForm();
     };
 
@@ -89,10 +90,9 @@ const BookForm = () => {
                 {submitted && valid
                     ? (<div className="aSection lineList">
                         <div className="title"> SUCCESSFULLY SUBMITTED NEW BOOK: </div>
-                        <BookInfoDisplay bookInfo={values} />
+                        <BookInfoDisplay book={values} />
                     </div>)
                     : null}
-
             </form>
         </div>
     )

@@ -3,21 +3,30 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import NewBook from './pages/NewBook';
+import BookForm from './pages/BookForm';
+import BookInfo from './pages/BookInfo';
 import Error from './pages/Error';
 
 import './App.css';
 
 function App() {
-  // const [newTitle, setNewTitle] = useState('');
   const [books, setBooks] = useState([]);
 
-  useEffect(function effectFunction() {
+  const addBook = (newBook) => {
+    const newBookWId = {...newBook, id: books.length + 1}
+    setBooks((prevState) => ([...prevState, newBookWId]));
+  };
+
+  useEffect(function effectFunction() { // onEntry read data
     const url = "http://localhost:5000/api";
     fetch(url)
       .then(response => response.json())
       .then(({ data: books }) => {
-        setBooks(books);
+        // add id here
+        const booksWId = books.map((book, key) => (
+          {...book, id: key + 1}
+        ));
+        setBooks(booksWId);
         console.log('FETCH BOOKS in App.js');
       })
       .catch((err) => {
@@ -28,20 +37,14 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar/>     {/* adds nav bar to ALL pages     */}
+        <Navbar />     {/* adds nav bar to ALL pages     */}
         <Routes>
-          <Route path='/' element={<Home books={books}/>} />
-          <Route path='/newBook' element={<NewBook />} />
+          <Route path='/' element={<Home books={books} />} />
+          <Route path='/:isbn' element={<BookInfo books={books} />} />
+          <Route path='/addBook' element={<BookForm addBook={addBook} />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </BrowserRouter>
-      {/* <BookForm />
-      <FormSingle handleSubmit={setNewTitle} handleChange={setNewTitle} />
-      {newTitle && <div>{`{Title: ${newTitle}}`} </div>}
-
-      <BookInfoDisplay bookInfo={books[0]} />
-
-      <BookList allBooks={books} /> */}
     </div>
   );
 }

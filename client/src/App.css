@@ -31,22 +31,38 @@ li {
   width: 100%;
   display: flex;
   text-align: left;
+  gap: 50px 10px;
 }
 .listLineItem {
   margin: 5px;
 }
-.listLineLabel {
+.bookListContainer {
+  display: grid;
+  grid-template-columns: 1fr 3fr 3fr;
+  grid-template-rows: 80px;
+  gap: 20px 10px;
+}
+/*  */
+.colLabel {
   min-width: 130px;
+  width: 130px;
   margin-right: 10px;
 }
+.colBookTitle {
+  font-weight: bold;
+  min-width: 30%;
+  width: 30%;
+}
+.colAuthors {
+  min-width: 30%;
+}
+/*  */
 .pageTitle {
   font-weight: bold;
   font-size: 20px;
   padding-bottom: 20px;
 }
-.bookTitle {
-  font-weight: bold;
-}
+
 .requiredMsg {
   color: red;
   text-align: left;
@@ -63,6 +79,7 @@ li {
 .navbar {
   display: flex;
   justify-content: start;
+  background: #efebeb;
 }
 .navbtn {
   margin: 10px 20px;
