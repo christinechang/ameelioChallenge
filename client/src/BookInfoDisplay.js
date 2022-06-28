@@ -2,7 +2,7 @@ import React from "react";
 
 const BookInfoItem = (props) => {
   return (
-    <div className="listLine">
+    <div className="infoLine">
       <div className="listLineItem colLabel">{props.label}:</div>
       <div className="listLineItem">{(props.value) || ''}</div>
     </div>

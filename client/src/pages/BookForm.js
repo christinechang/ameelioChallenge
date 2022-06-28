@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import BookInfoDisplay from "../BookInfoDisplay"
-// import BookList from "../BookList";
 import { NavLink } from "react-router-dom";
 
 const InputSingle = (props) => {
     return (
-        <div className="listLine">
+        <div className="infoLine">
             <div className="listLineItem colLabel ">{props.label || 'Value'}</div>
             <input
                 id={props.itemName}
@@ -69,7 +67,6 @@ const BookForm = (props) => {
         });
     };
 
-    const successfully = 'Successfully submitted new book:';
     const newBookForm = (
         <div className="aSection lineList">
             <div className="pageTitle">New Book Entry</div>
@@ -99,7 +96,7 @@ const BookForm = (props) => {
                 <div className="pageTitle"> SUCCESSFULLY SUBMITTED </div>
 
                 <NavLink
-                    to={`/${values.isbn}`}
+                    to={`/${idx}`}
                     className="linkBtn">
                     Click here to see new book info.
                 </NavLink>

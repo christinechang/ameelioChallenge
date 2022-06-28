@@ -5,7 +5,6 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import BookForm from './pages/BookForm';
 import BookInfo from './pages/BookInfo';
-import Success from './pages/Success';
 import Error from './pages/Error';
 
 import './App.css';
@@ -34,15 +33,17 @@ function App() {
         console.log('Fetch ERROR.......', err);
       })
   }, []);
-
+  // note: can use isbn as index except that in database not all have isbn,
+  //       so, on loading data, I created id, based on index in the array.
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />     {/* adds nav bar to ALL pages     */}
         <Routes>
           <Route path='/' element={<Home books={books} />} />
-          <Route path='/:isbn' element={<BookInfo books={books} />} />
-          <Route path='/addBook' element={<BookForm addBook={addBook} idx={books.length + 1} />} />
+          <Route path='/:id' element={<BookInfo books={books} />} />
+          {/* <Route path='/:isbn' element={<BookInfo books={books} />} /> */}
+          <Route path='/addBook' element={<BookForm addBook={addBook} idx={books.length} />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </BrowserRouter>

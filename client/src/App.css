@@ -29,6 +29,9 @@ li {
 
 .listLineItem {
   margin: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .gridHeader {
   font-weight: bold;
@@ -37,17 +40,22 @@ li {
 }
 .listLine {
   display: grid;
-  grid-template-columns: 1fr 4fr 4fr;
+  grid-template-columns: 1fr 3fr 8fr 8fr;
+  grid-template-rows: 1fr;
+  gap: 20px 10px;
+}
+.gridId {
+  text-decoration: none;
+}
+
+.infoLine {
+  display: grid;
+  grid-template-columns: 150px 4fr;
   grid-template-rows: 1fr;
   gap: 20px 10px;
 }
 
-.colLabel {
-  min-width: 130px;
-  width: 130px;
-  margin-right: 10px;
-}
-.colBookTitle {
+.gridBookTitle {
   font-weight: bold;
 }
 
