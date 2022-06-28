@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BookInfoDisplay from "../BookInfoDisplay"
-import BookList from "../BookList";
+// import BookList from "../BookList";
+import { NavLink } from "react-router-dom";
 
 const InputSingle = (props) => {
     return (
@@ -19,7 +20,7 @@ const InputSingle = (props) => {
     );
 }
 const BookForm = (props) => {
-    const { addBook } = props;
+    const { addBook, idx } = props;
     const [values, setValues] = useState({
         title: '',
         isbn: '',
@@ -68,7 +69,8 @@ const BookForm = (props) => {
         });
     };
 
-    return (
+    const successfully = 'Successfully submitted new book:';
+    const newBookForm = (
         <div className="aSection lineList">
             <div className="pageTitle">New Book Entry</div>
             <form onSubmit={handleSubmit} >
@@ -87,14 +89,22 @@ const BookForm = (props) => {
                 <InputSingle itemName="categories" label="Categories" onChange={(event) => handleInputChange(event, 'categories')} values={values} />
 
                 <button className="submitButton">Submit</button>
-                {submitted && valid
-                    ? (<div className="aSection lineList">
-                        <div className="title"> SUCCESSFULLY SUBMITTED NEW BOOK: </div>
-                        <BookInfoDisplay book={values} />
-                    </div>)
-                    : null}
             </form>
         </div>
+    );
+
+    return (
+        (submitted && valid)
+            ? (<div className="aSection lineList">
+                <div className="pageTitle"> SUCCESSFULLY SUBMITTED </div>
+
+                <NavLink
+                    to={`/${values.isbn}`}
+                    className="linkBtn">
+                    Click here to see new book info.
+                </NavLink>
+            </div>)
+            : newBookForm
     )
 }
 

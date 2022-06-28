@@ -8,11 +8,23 @@ const formatArray = (arr2Check) => (
         : []
 );
 
+const gridHeader = (
+    <>
+    <li key="header" className="listLine gridHeader">
+        <div key="headerIsbn" className="listLineItem colLabel">ISBN</div>
+        <div key="headerTitle" className="listLineItem">Title</div>
+        <div key="headerAuthors" className="listLineItem">Author(s)</div>
+    </li>
+    <li>
+        <div className="finePrint">(click for more info)</div>
+    </li>
+    </>
+);
 
 const Book1Line = (props) => {
     const book = props.book;
     return (
-        <li key={`${book.isbn || book.title}`} className="listLine">
+        <li key={book.id} className="listLine">
             <NavLink
                 to={`/${book.isbn}`}
                 key={`${book.id}.info`}
@@ -21,7 +33,6 @@ const Book1Line = (props) => {
             </NavLink>
             <div key={`${book.id}.title`} className=" listLineItem colBookTitle">{book.title}</div>
             <div key={`${book.id}.auth`} className=" listLineItem colAuthors">{`by ${formatArray(book.authors)}`}</div>
-
         </li>
     )
 }
@@ -30,10 +41,11 @@ const BookList = (props) => {
     const { books } = props;
     return (
         <div className="aSection lineList">
-            <div className="pageTitle">Book List</div>
+            <div className="pageTitle">BOOK LIST </div>
             <ul>
+                {gridHeader}
                 {books.map((book, idx) =>
-                    <Book1Line book={book} key={`${book.id || book.title}.${book.title.slice(0, 4)}`} />
+                    <Book1Line book={book} key={book.id} />
                 )}
             </ul>
         </div>);

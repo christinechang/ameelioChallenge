@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import BookForm from './pages/BookForm';
 import BookInfo from './pages/BookInfo';
+import Success from './pages/Success';
 import Error from './pages/Error';
 
 import './App.css';
@@ -41,7 +42,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home books={books} />} />
           <Route path='/:isbn' element={<BookInfo books={books} />} />
-          <Route path='/addBook' element={<BookForm addBook={addBook} />} />
+          <Route path='/addBook' element={<BookForm addBook={addBook} idx={books.length + 1} />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </BrowserRouter>

@@ -18,6 +18,11 @@ const BookInfoDisplay = (props) => {
 
   return (
     <div className="aSection lineList">
+      { props.title
+        ? (<div className="pageTitle">{props.title } </div>)
+        : (<></>)
+      }
+
       <BookInfoItem label='Title' value={getBookInfo('title')} />
       <BookInfoItem label='Authors' value={getBookInfo('authors')} />
       <BookInfoItem label='ISBN' value={getBookInfo('isbn')} />
