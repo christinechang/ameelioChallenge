@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const InputSingle = (props) => {
     return (
         <div className="infoLine">
-            <div className="listLineItem colLabel ">{props.label || 'Value'}</div>
+            <div className="listLineItem boldTitle ">{props.label || 'Value'}</div>
             <input
                 id={props.itemName}
                 name={props.itemName}
@@ -68,7 +68,7 @@ const BookForm = (props) => {
     };
 
     const newBookForm = (
-        <div className="aSection lineList">
+        <div className="section lineList">
             <div className="pageTitle">New Book Entry</div>
             <form onSubmit={handleSubmit} >
                 <InputSingle itemName="title" label="Title*" onChange={(event) => handleInputChange(event, 'title')} values={values} />
@@ -92,7 +92,7 @@ const BookForm = (props) => {
 
     return (
         (submitted && valid)
-            ? (<div className="aSection lineList">
+            ? (<div className="section lineList">
                 <div className="pageTitle"> SUCCESSFULLY SUBMITTED </div>
 
                 <NavLink

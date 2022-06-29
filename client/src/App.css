@@ -15,7 +15,14 @@ ul {
 li {
   text-align: left;
 }
-.aSection {
+img {
+  text-align: left;
+}
+
+.mainPage {
+  margin: 20px;
+}
+.section {
   border: 1px grey solid;
   margin: 20px;
   padding: 20px;
@@ -32,6 +39,9 @@ li {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.listParagraphItem {
+  margin: 5px;
 }
 .gridHeader {
   font-weight: bold;
@@ -55,7 +65,7 @@ li {
   gap: 20px 10px;
 }
 
-.gridBookTitle {
+.boldTitle {
   font-weight: bold;
 }
 

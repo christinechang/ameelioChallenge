@@ -18,10 +18,10 @@ const FormSingle = (props) => {
     }
 
     return (
-        <div className="aSection">
+        <div className="section">
             <div className="title">Single Form</div>
             <form onSubmit={handleSubmit} onChange={handleChange} className="listLine">
-                <div className="listLineItem colLabel">{props.label || 'Value'}</div>
+                <div className="listLineItem boldTitle">{props.label || 'Value'}</div>
                 <input
                     type="text"
                     placeholder={props.label || 'value'}
