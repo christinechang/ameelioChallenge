@@ -1,29 +1,34 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const InputSingle = (props) => {
-    return (
-        <div className="infoLine">
-            <div className="listLineItem boldTitle ">{props.label || 'Value'}</div>
-            <input
-                id={props.itemName}
-                name={props.itemName}
-                className="listLineItem"
-                type="text"
-                placeholder={props.label}
-                value={props.values[props.itemName]}
-                onChange={props.onChange}
-            />
-        </div>
-    );
+const isDateValid = (dateToTest) => {
+    const date = new Date(dateToTest);
+    return (date instanceof Date && !isNaN(date));
 }
+
+const InputSingle = (props) => (
+    <div className="infoLine">
+        <div className="listLineItem boldTitle ">{props.label || 'Value'}</div>
+        <input
+            id={props.itemName}
+            name={props.itemName}
+            className="listLineItem"
+            type="text"
+            placeholder={props.label}
+            value={props.itemName === 'publishedDate' ? props.values[props.itemName]['$date'] : props.values[props.itemName]}
+            onChange={props.onChange}
+        />
+    </div>
+);
+
+
 const BookForm = (props) => {
     const { addBook, idx } = props;
     const [values, setValues] = useState({
         title: '',
         isbn: '',
         pageCount: '',
-        publishDate: '',
+        publishedDate: { $date: '' },
         thumbnailUrl: '',
         shortDescription: '',
         longDescription: '',
@@ -38,13 +43,18 @@ const BookForm = (props) => {
         event.persist();
         setValues((prevState) => ({
             ...prevState,
-            [itemName]: event.target.value,
+            [itemName]: itemName === 'publishedDate' ? { '$date': event.target.value } : event.target.value,
         }));
     };
 
     const handleSubmit = (e) => {
+        console.log('valid date?:', values.publishedDate.$date,isDateValid(values.publishedDate.$date));
         e.preventDefault();
-        if (values.title && values.shortDescription && values.authors) {
+        if (values.title
+            && values.shortDescription
+            && values.authors
+            && isDateValid(values.publishedDate.$date)
+            ) {
             setValid(true);
         }
         setSubmitted(true);
@@ -57,7 +67,7 @@ const BookForm = (props) => {
             title: '',
             isbn: '',
             pageCount: '',
-            publishDate: '',
+            publishedDate: { "$date": '' },
             thumbnailUrl: '',
             shortDescription: '',
             longDescription: '',
@@ -75,7 +85,8 @@ const BookForm = (props) => {
                 {submitted && !values.title ? <span className="requiredMsg listLineItem" required={true}>Title is required</span> : null}
                 <InputSingle itemName="isbn" label="ISBN" onChange={(event) => handleInputChange(event, 'isbn')} values={values} />
                 <InputSingle itemName="pageCount" label="Page Count" onChange={(event) => handleInputChange(event, 'pageCount')} values={values} />
-                <InputSingle itemName="publishDate" label="Publish Date" onChange={(event) => handleInputChange(event, 'publishDate')} values={values} />
+                <InputSingle itemName="publishedDate" label="Publish Date" onChange={(event) => handleInputChange(event, 'publishedDate')} values={values} />
+                {submitted && !isDateValid(values.publishedDate.$date) ? <span className="requiredMsg listLineItem">Date is invalid</span> : null}
                 <InputSingle itemName="thumbnailUrl" label="Thumbnail Url" onChange={(event) => handleInputChange(event, 'thumbnailUrl')} values={values} />
                 <InputSingle itemName="shortDescription" label="Short Description*" onChange={(event) => handleInputChange(event, 'shortDescription')} values={values} />
                 {submitted && !values.shortDescription ? <span className="requiredMsg listLineItem">Short Description is required</span> : null}
@@ -94,9 +105,8 @@ const BookForm = (props) => {
         (submitted && valid)
             ? (<div className="section lineList">
                 <div className="pageTitle"> SUCCESSFULLY SUBMITTED </div>
-
                 <NavLink
-                    to={`/${idx}`}
+                    to={`/booklist/${idx}`}
                     className="linkBtn">
                     Click here to see new book info.
                 </NavLink>

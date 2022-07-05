@@ -11,13 +11,13 @@ const formatArray = (arr2Check) => (
 const gridHeader = (
     <>
         <li key="header" className="listLine gridHeader">
-            <div key="headerId" className="listLineItem">ID</div>
             <div key="headerIsbn" className="listLineItem boldTitle">ISBN</div>
             <div key="headerTitle" className="listLineItem">Title</div>
             <div key="headerAuthors" className="listLineItem">Author(s)</div>
         </li>
-        <li>
-            <div className="finePrint">(info)</div>
+        <li key="finePrint" className="listLine">
+            <div></div>
+            <div className="finePrint">(click for more info)</div>
         </li>
     </>
 );
@@ -26,14 +26,14 @@ const Book1Line = (props) => {
     const book = props.book;
     return (
         <li key={book.id} className="listLine">
+            <div key={`${book.id}.isbn`} className=" listLineItem">{book.isbn} </div>
             <NavLink
                 to={`/bookList/${book.id}`}
                 key={`${book.id}.id`}
                 className=" listLineItem gridId">
-                {book.id}
+                {book.title}
             </NavLink>
-            <div key={`${book.id}.isbn`} className=" listLineItem">{book.isbn} </div>
-            <div key={`${book.id}.title`} className=" listLineItem boldTitle">{book.title}</div>
+            {/* <div key={`${book.id}.title`} className=" listLineItem boldTitle">{book.title}</div> */}
             <div key={`${book.id}.auth`} className=" listLineItem">{formatArray(book.authors)}</div>
         </li>
     )
