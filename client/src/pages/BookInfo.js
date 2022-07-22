@@ -26,8 +26,13 @@ const isValidHttpUrl = (testURL) => {
 const BookInfo = (props) => {
   const { books, pageTitle } = props;
   const { id } = useParams();
-  const book = books[id - 1];
-
+  const book = books.find((book) => {
+    if (!book.isbn) { // for cases with no isbn
+      return(id && id.includes(book.title.substring(0,9).trim()));
+    }
+    // because of some duplicate isbns, must also match beginning of title
+    return(id && (id.includes(book.isbn) && id.includes(book.title.substring(0,9).trim())));
+  });
   const getBookInfo = (key) => {
     let info = book ? book[key] : '';
     if (key === 'publishedDate' && book) {

@@ -7,16 +7,17 @@ import BookForm from './pages/BookForm';
 import BookInfo from './pages/BookInfo';
 import BookList from './pages/BookList';
 import Error from './pages/Error';
+import { createId } from './utilities';
+import { BookInfoObject } from './interfaces/BookInfoInterfaces';
 
 import './App.css';
 
 function App() {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState<BookInfoObject[]>([]);
 
-  const addBook = (newBook) => {
-    const newBookWId = {...newBook, id: books.length + 1}
-    setBooks((prevState) => ([...prevState, newBookWId]));
-    console.log('newbook: .....', newBookWId);
+  const addBook = (newBook: BookInfoObject) => {
+    const newBookWId = { ...newBook, id: createId(newBook.isbn, newBook.title) };
+    setBooks((prevState: BookInfoObject[]) => ([...prevState, newBookWId]));
   };
 
   useEffect(function effectFunction() { // onEntry read data
@@ -24,9 +25,9 @@ function App() {
     fetch(url) // FETCH BOOKS in App.js
       .then(response => response.json())
       .then(({ data: books }) => {
-        const booksWId = books.map((book, key) => (
-          {...book, id: key + 1}
-        ));
+        const booksWId = books.map((book: BookInfoObject) => {
+          return ({ ...book, id: createId(book.isbn, book.title) });
+        });
         setBooks(booksWId);
       })
       .catch((err) => {

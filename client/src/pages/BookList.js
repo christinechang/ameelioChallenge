@@ -22,8 +22,7 @@ const gridHeader = (
     </>
 );
 
-const Book1Line = (props) => {
-    const book = props.book;
+const Book1Line = ({book}) => { // {book} is shorter than (props) and then book = props.book
     return (
         <li key={book.id} className="listLine">
             <div key={`${book.id}.isbn`} className=" listLineItem">{book.isbn} </div>

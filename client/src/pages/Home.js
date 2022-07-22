@@ -24,6 +24,9 @@ const Home = (props) => {
         books without ISBN, so I create an ID on entry which is used to index into
         book array to get info to display full.
       </p>
+      <h3>note - to get this running:</h3>
+      <p> (open terminal in vsCode in ameelioChallenge dir) cd server; npm start</p>
+      <p> (open another terminal) cd client; npm start</p>
     </div>
   );
 }
