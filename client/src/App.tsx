@@ -8,16 +8,16 @@ import BookInfo from './pages/BookInfo';
 import BookList from './pages/BookList';
 import Error from './pages/Error';
 import { createId } from './utilities';
-import { BookInfoObject } from './interfaces/BookInfoInterfaces';
+import { IBook } from './interfaces/BookInterfaces';
 
 import './App.css';
 
 function App() {
-  const [books, setBooks] = useState<BookInfoObject[]>([]);
+  const [books, setBooks] = useState<IBook[]>([]);
 
-  const addBook = (newBook: BookInfoObject) => {
+  const addBook = (newBook: IBook) => {
     const newBookWId = { ...newBook, id: createId(newBook.isbn, newBook.title) };
-    setBooks((prevState: BookInfoObject[]) => ([...prevState, newBookWId]));
+    setBooks((prevState: IBook[]) => ([...prevState, newBookWId]));
   };
 
   useEffect(function effectFunction() { // onEntry read data
@@ -25,7 +25,7 @@ function App() {
     fetch(url) // FETCH BOOKS in App.js
       .then(response => response.json())
       .then(({ data: books }) => {
-        const booksWId = books.map((book: BookInfoObject) => {
+        const booksWId = books.map((book: IBook) => {
           return ({ ...book, id: createId(book.isbn, book.title) });
         });
         setBooks(booksWId);
