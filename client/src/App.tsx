@@ -40,7 +40,7 @@ function App() {
       <BrowserRouter>
         <Navbar />     {/* adds nav bar to ALL pages     */}
         <Routes>
-          <Route path='/' element={<Home books={books} />} />
+          <Route path='/' element={<Home />} />
           <Route path='/bookList' element={<BookList books={books} />} />
           <Route path='/bookList/:id' element={<BookInfo books={books} />} />
           <Route path='/addBook' element={<BookForm addBook={addBook} idx={books.length} />} />

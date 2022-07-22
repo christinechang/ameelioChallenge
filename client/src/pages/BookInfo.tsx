@@ -41,6 +41,7 @@ const BookInfo = ({ books, pageTitle, ...props }: IBookInfoProps) => {
 
   const getBookInfo = (bookKey: IBookKey) => {
     if (book && bookKey.toString() === 'publishedDate') {
+      console.log('book.publishedDate: ', book.publishedDate);
       const dateProcessed = book.publishedDate && book.publishedDate['$date']; // object element '$date'
       return(dateProcessed ? (new Date(dateProcessed)).toLocaleDateString() : '');
     }
