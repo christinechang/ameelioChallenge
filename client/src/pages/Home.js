@@ -25,8 +25,10 @@ const Home = (props) => {
       </ul>
 
       <h3>note - to get this running:</h3>
-      <p> (open terminal in vsCode in ameelioChallenge dir) cd server; npm start</p>
-      <p> (open another terminal) cd client; npm start</p>
+      <ul>
+        <li> (open terminal in vsCode in ameelioChallenge dir) cd server; npm start</li>
+        <li> (open another terminal) cd client; npm start</li>
+      </ul>
     </div>
   );
 }
