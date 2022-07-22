@@ -22,9 +22,8 @@ const InputSingle = (props) => (
     </div>
 );
 
-
 const BookForm = (props) => {
-    const { addBook, idx } = props;
+    const { addBook } = props;
     const [newBook, setNewBook] = useState({
         id: '',
         title: '',
@@ -50,7 +49,6 @@ const BookForm = (props) => {
     };
 
     const handleSubmit = (e) => {
-        // console.log('valid date?:', newBook.publishedDate.$date,isDateValid(newBook.publishedDate.$date));
         e.preventDefault();
         if (newBook.title
             && newBook.shortDescription
