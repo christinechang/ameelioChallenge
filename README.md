@@ -1,9 +1,9 @@
-# ameelioChallenge
+# booklist example
 
-start server:
+start server: new terminal
 > cd server
 > npm start
 
-start client:
+start client: new terminal
 > cd client
 > npm start

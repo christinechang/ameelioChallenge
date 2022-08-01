@@ -1,3 +1,20 @@
+### czc notes
+### npm i react-router-dom --save   // in client install react router
+
+in public folder: index.html rewritten
+
+# BookList Example
+
+start server: new terminal
+> cd server
+> npm start
+
+start client: new terminal
+> cd client
+> npm start
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -73,7 +90,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-### czc notes
-npm i react-router-dom --save   // in client
-
-in public folder: index.html rewritten
