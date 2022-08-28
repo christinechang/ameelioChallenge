@@ -9,7 +9,7 @@ const FormSingle = (props) => {
         event.preventDefault();
         console.log('value: ', value);
         props.handleSubmit(value);
-        setValue('');
+        setValue(''); // resets input to blank
     };
 
     const handleChange = (event) => {
